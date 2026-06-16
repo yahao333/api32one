@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api32one - 大模型中转服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.3em;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        .tagline {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid #667eea;
+            color: #667eea;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .feature-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        .feature-card p {
+            color: #a0a0a0;
+            font-size: 0.95em;
+        }
+        .docs-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .docs-section h2 {
+            color: white;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .doc-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .doc-link {
+            display: block;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .doc-link:hover {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        .doc-link h4 {
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            color: #667eea;
+        }
+        .doc-link p {
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+        .code-example {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .code-example code {
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            color: #c9d1d9;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .comment { color: #8b949e; }
+        .keyword { color: #ff7b72; }
+        .string { color: #a5d6ff; }
+        .function { color: #d2a8ff; }
+        footer {
+            text-align: center;
+            color: #666;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            margin-top: 15px;
+        }
+        .footer-links a {
+            color: #888;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>api32one</h1>
+            <p>一个只在小圈子内流转的大模型中转服务</p>
+            <span class="tagline">🚀 一套 API · 多模型 · 零麻烦</span>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>多模型统一接入</h3>
+                <p>一套 API 调用 GPT-4o、Claude、Gemini、DeepSeek 等主流模型，零门槛迁移</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>智能路由</h3>
+                <p>自动选择最优模型，速度优先或成本优先，随心切换</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>用量可视化</h3>
+                <p>实时看板、预算上限、百分比告警，告别月底账单惊吓</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>安全合规</h3>
+                <p>敏感词检测、PII脱敏、自动重试、熔断保护</p>
+            </div>
+        </div>
+
+        <div class="docs-section">
+            <h2>📄 政策文档</h2>
+            <div class="doc-links">
+                <a href="/terms/" class="doc-link">
+                    <h4>📜 服务条款</h4>
+                    <p>了解 api32one 的使用规范、额度说明和免责条款</p>
+                </a>
+                <a href="/privacy/" class="doc-link">
+                    <h4>🔒 隐私政策</h4>
+                    <p>了解我们如何收集、处理和保护您的数据</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="docs-section">
+            <h2>⚡ 快速开始</h2>
+            <p style="color: #a0a0a0; margin-bottom: 20px;">
+                通过兑换码激活后，只需修改 base_url 即可开始使用：
+            </p>
+            <div class="code-example">
+                <code><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI
+
+client = OpenAI(
+    api_key=<span class="string">"YOUR_API_KEY"</span>,
+    base_url=<span class="string">"https://api.api32.one/v1"</span>  <span class="comment"># 改这一个地址</span>
+)
+
+response = client.chat.completions.create(
+    model=<span class="string">"gpt-4o"</span>,  <span class="comment"># 或 claude-3-5-sonnet / gemini-pro / deepseek-chat</span>
+    messages=[{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Hello!"</span>}]
+)
+<span class="function">print</span>(response.choices[<span class="number">0</span>].message.content)</code>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 api32one. All rights reserved.</p>
+            <p style="margin-top: 10px; color: #666;">
+                仅供内部技术交流使用 · 兑换码机制接入
+            </p>
+            <div class="footer-links">
+                <a href="/terms/">服务条款</a>
+                <a href="/privacy/">隐私政策</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
